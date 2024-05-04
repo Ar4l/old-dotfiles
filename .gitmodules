@@ -1,0 +1,15 @@
+[submodule ".vim/pack/vendor/start/gruvbox"]
+	path = .vim/pack/vendor/start/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule ".vim/pack/vendor/start/nerdtree"]
+	path = .vim/pack/vendor/start/nerdtree
+	url = git@github.com:preservim/nerdtree.git
+[submodule ".vim/pack/vendor/start/ack.vim"]
+	path = .vim/pack/vendor/start/ack.vim
+	url = git@github.com:mileszs/ack.vim.git
+[submodule ".vim/pack/vendor/start/ctrlp.vim"]
+	path = .vim/pack/vendor/start/ctrlp.vim
+	url = git@github.com:ctrlpvim/ctrlp.vim.git
+[submodule ".vim/pack/vendor/start/vim-easymotion"]
+	path = .vim/pack/vendor/start/vim-easymotion
+	url = git@github.com:easymotion/vim-easymotion.git
