@@ -10,6 +10,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# fucking conda being conda
+alias python=python3
+alias pip=pip3
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'

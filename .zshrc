@@ -1,3 +1,10 @@
+
+# Alias definitions.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
+
 # From Terminal Gruvbox theme: colour ls entries
 export CLICOLOR=1
 
@@ -13,8 +20,6 @@ export PATH="/Users/Aral/opt/anaconda3/bin":"$PATH"
 export PATH="/Users/Aral/.local/bin":"$PATH"
 export PATH="/Users/Aral/.ghcup/bin":"$PATH"
 
-# export PYTHONPATH="/Users/Aral/Aral/.bin":"$PYTHONPATH"
-
 # Application shorthands
 export vs="Visual Studio Code"
 export ij="IntelliJ IDEA"
@@ -26,18 +31,6 @@ export rp="/Users/Aral/Aral/Delft/YEAR 3/0 RESEARCH PROJECT/LLM4CodeCompression"
 export ml="/Users/Aral/Desktop/Music Library"
 export brain="/Users/Aral/Library/Mobile Documents/iCloud~md~obsidian/Documents/Brain 2.0"
 export dev='/Users/Aral/Aral/Dev'
-
-
-# Command Shorthands 
-function mkd() {
-    mkdir $1
-    cd $1
-}
-
-function cl() {
-    cd $1
-    ls -laht
-}
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
