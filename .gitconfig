@@ -1,0 +1,19 @@
+[user]
+	name = Aral
+	email = me@aral.cc
+[init]
+	defaultBranch = main
+[alias]
+	ac = commit -am
+	plog = log --graph --oneline --decorate
+	aa = commit --all --amend
+[core]
+	autocrlf = input
+	excludesFile = /Users/Aral/.gitignore_global
+[maintenance]
+	repo = /Users/Aral/Aral/Delft/YEAR 4/2 AI Assistant Usability/data analysis/code4me-analysis
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
