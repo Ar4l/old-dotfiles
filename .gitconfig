@@ -7,6 +7,7 @@
 	ac = commit -am
 	plog = log --graph --oneline --decorate
 	aa = commit --all --amend
+    ad = !sh -c 'cd -- ${GIT_PREFIX:-.} && git add -- "$@" && git status' --
 [core]
 	autocrlf = input
 	excludesFile = /Users/Aral/.gitignore_global
