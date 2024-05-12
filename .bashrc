@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
@@ -15,15 +16,24 @@ source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.
 
 # PROMPT
 function cur_git_branch() {
-  # branch in dark yellow bold text
-  branch=$(__git_ps1 '%s ')
-  printf "\e[33;1m${branch}\e[0m"
+
+  if ! command -v __git_ps1 &> /dev/null  # first check if the command exists 
+    then printf "\e[33mx \e[0m"          # then print (x) in dark orange text 
+
+  else 
+    branch=$(__git_ps1 '%s ')
+    printf "\e[33;1m${branch}\e[0m"         # branch in dark yellow bold text
+  fi
 }
 
 function cur_conda_env() {
-  # active conda env in light purple bold text
+
+  # if [ -z "$CONDA_DEFAULT_ENV" ]    # if no conda env is set, 
+  #   then printf "\e[35mx \e[0m"     # put an x in dark purple text
+  # elif
+
   if [ ! -z "$CONDA_DEFAULT_ENV" ]
-    then printf "\e[95;1m$CONDA_DEFAULT_ENV \e[0m"
+    then printf "\e[95;1m$CONDA_DEFAULT_ENV \e[0m"  # active conda env in light purple bold text
   fi
 }
 
