@@ -62,23 +62,7 @@ set noerrorbells visualbell t_vb=
 " Enable mouse support. You should avoid relying on this too much, but it can
 " sometimes be convenient.
 set mouse+=a
-" 
-" " Try to prevent bad habits like using the arrow keys for movement. This is
-" " not the only possible bad habit. For example, holding down the h/j/k/l keys
-" " for movement, rather than using more efficient movement commands, is also a
-" " bad habit. The former is enforceable through a .vimrc, while we don't know
-" " how to prevent the latter.
-" " Do this in normal mode...
-" nnoremap <Left>  :echoe "Use h"<CR>
-" nnoremap <Right> :echoe "Use l"<CR>
-" nnoremap <Up>    :echoe "Use k"<CR>
-" nnoremap <Down>  :echoe "Use j"<CR>
-" " ...and in insert mode
-" inoremap <Left>  <ESC>:echoe "Use h"<CR>
-" inoremap <Right> <ESC>:echoe "Use l"<CR>
-" inoremap <Up>    <ESC>:echoe "Use k"<CR>
-" inoremap <Down>  <ESC>:echoe "Use j"<CR>
-" 
+
 if (empty($TMUX))
   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
@@ -87,6 +71,7 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
 
 colorscheme gruvbox
 set background=dark
@@ -97,4 +82,56 @@ set tabstop=4
 " when indenting with '>', use 4 spaces width
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
-set expandtab
+" set expandtab
+
+
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+
+" Make sure you use single quotes
+
+" " Editors in the 21st century should ship with language servers
+" Plug 'prabirshrestha/vim-lsp'
+" 
+" " Automatically install lsp for an open file 
+" Plug 'mattn/vim-lsp-settings'
+" 
+" " Autocompletion does not ship with the fucking lsp client???
+" Plug 'prabirshrestha/asyncomplete.vim'
+" 
+" " Autocompletion is not fuckign linked to the Lsp client?????
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+" Easy alignment as it should be 
+Plug 'junegunn/vim-easy-align'
+
+" Better defaults
+Plug 'tpope/vim-sensible'
+
+Plug 'prabirshrestha/asyncomplete.vim' 			" auto completions please
+Plug 'prabirshrestha/vim-lsp'					" language server to provide them
+Plug 'prabirshrestha/asyncomplete-lsp.vim'		" link ls to completions 
+
+Plug 'mileszs/ack.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'preservim/nerdtree'
+Plug 'easymotion/vim-easymotion'
+
+call plug#end()
+
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+
