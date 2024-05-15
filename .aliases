@@ -31,5 +31,5 @@ function cl() {
 }
 
 alias nv='watch -d -n "0.5" nvidia-smi'
-
+alias gis='git status'
 

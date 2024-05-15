@@ -11,8 +11,8 @@ if [[ $PWD = */dotfiles ]]; then
 	git submodule init
 	git submodule update --init --recursive 
 
-	mv dotfiles/* ../
-	mv dotfiles/.* ../
+	mv * ../
+	mv .* ../
 
 	if ! which apt-get > /dev/null; then 
 		apt-get update 
