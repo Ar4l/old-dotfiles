@@ -30,6 +30,32 @@ function cl() {
   ls -laht
 }
 
+function killge() {
+
+  if [ "$#" -lt 1 ]; then
+    echo 'Usage: killge <higher_than_pid>'
+    return
+  fi
+
+  # prompt the user first
+  to_kill=$(ps aux | awk -v treshold=$1 '$2 >= treshold')
+  echo "$to_kill"
+  echo '> Kill the above processes? (y/n)'
+  read -r answer
+
+  if [[ "$answer" == "y" ]]; then
+    echo "Confirmed. Proceeding..."
+
+    pids_to_kill=$(echo $to_kill | awk '{print $2}')
+    kill $pids_to_kill
+
+  elif [[ "$answer" == "n" ]]; then
+    echo "Aborted."
+  else
+    echo "Invalid input. Aborted."
+  fi
+}
+
 alias nv='watch -d -n "0.5" nvidia-smi'
 alias gis='git status'
 
