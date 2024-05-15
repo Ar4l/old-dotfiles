@@ -46,7 +46,7 @@ function killge() {
   if [[ "$answer" == "y" ]]; then
     echo "Confirmed. Proceeding..."
 
-    pids_to_kill=$(echo $to_kill | awk '{print $2}')
+    pids_to_kill=$(echo "$to_kill" | awk '{print $2}' | tail -n +2)
     kill $pids_to_kill
 
   elif [[ "$answer" == "n" ]]; then
