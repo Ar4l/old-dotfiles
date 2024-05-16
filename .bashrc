@@ -11,8 +11,12 @@ fi
 if [ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash ]; then
     . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
 fi
+if [ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh ]; then 
+	source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+else 
+	source ~/.bash_git
+fi 
 
-source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 
 # PROMPT
 function cur_git_branch() {

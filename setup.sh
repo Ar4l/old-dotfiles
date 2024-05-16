@@ -15,14 +15,21 @@ if [[ $PWD = */dotfiles ]]; then
 	# git submodule init
 	# git submodule update --init --recursive 
 
-	mv * ../
-	mv .* ../
+	yes no | mv * ../
+	yes no | mv .* ../
 
 	cd ..
 
 	if which apt-get > /dev/null; then 
-		yes | apt-get update 
-		yes | apt-get install vim 
+
+		if [ "$EUID" -ne 0 ]; then 
+		else # requires root 
+			yes | apt-get update 
+			yes | apt-get install vim 
+		fi
+
+
+		curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.bash_git
 
 		# git lfs 
 		curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -34,7 +41,7 @@ if [[ $PWD = */dotfiles ]]; then
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 
-	rm -r dotfiles
+	rm -rf dotfiles
 
 	# open a new shell
 	exec bash
