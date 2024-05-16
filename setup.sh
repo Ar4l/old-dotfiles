@@ -23,10 +23,16 @@ if [[ $PWD = */dotfiles ]]; then
 	if which apt-get > /dev/null; then 
 		yes | apt-get update 
 		yes | apt-get install vim 
+
+		# git lfs 
+		curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+		yes | apt-get install git-lfs 
 	fi
 
+	# vim plugins
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 
 	rm -r dotfiles
 
