@@ -23,6 +23,7 @@ if [[ $PWD = */dotfiles ]]; then
 	if which apt-get > /dev/null; then 
 
 		if [ "$EUID" -ne 0 ]; then 
+			echo 'not a root user'
 		else # requires root 
 			yes | apt-get update 
 			yes | apt-get install vim 
