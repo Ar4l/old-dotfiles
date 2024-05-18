@@ -11,6 +11,8 @@ if [[ $PWD = */dotfiles ]]; then
 	# make this file delete itself to not clutter the home directory
 	# setups are one-off 
 	rm setup.sh
+ 	# similarly, let's not make every sub-directory be implicitly tracked by git
+ 	rm -rf .git
 
 	# git submodule init
 	# git submodule update --init --recursive 
@@ -29,7 +31,6 @@ if [[ $PWD = */dotfiles ]]; then
 			yes | apt-get install vim 
 		fi
 
-
 		curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.bash_git
 
 		# git lfs 
@@ -41,7 +42,9 @@ if [[ $PWD = */dotfiles ]]; then
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-
+	# update tmux 
+	tmux source-file ~/.tmux.conf
+ 
 	rm -rf dotfiles
 
 	# open a new shell
