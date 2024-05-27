@@ -73,9 +73,6 @@ if (empty($TMUX))
 endif
 
 
-colorscheme gruvbox
-set background=dark
-
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
@@ -108,6 +105,9 @@ call plug#begin()
 " " Autocompletion is not fuckign linked to the Lsp client?????
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
+" Proper groovy 
+Plug 'morhetz/gruvbox'
+
 " Easy alignment as it should be 
 Plug 'junegunn/vim-easy-align'
 
@@ -134,4 +134,6 @@ if executable('pyls')
         \ })
 endif
 
+colorscheme gruvbox
+set background=dark
 
