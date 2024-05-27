@@ -134,6 +134,5 @@ if executable('pyls')
         \ })
 endif
 
-colorscheme gruvbox
 set background=dark
 

@@ -41,6 +41,8 @@ if [[ $PWD = */dotfiles ]]; then
 	# vim plugins
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	vim +PlugInstall +qall
+	echo 'colorscheme gruvbox' >> .vimrc
 
 	# update tmux 
 	tmux source-file ~/.tmux.conf
