@@ -15,7 +15,7 @@ alias python=python3
 alias pip=pip3
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -27,7 +27,7 @@ function mkd() {
 
 function cl() {
   cd $1
-  ls -laht
+  ls 
 }
 
 function killge() {
