@@ -32,6 +32,15 @@ export ml="/Users/Aral/Desktop/Music Library"
 export brain="/Users/Aral/Library/Mobile Documents/iCloud~md~obsidian/Documents/Brain 2.0"
 export dev='/Users/Aral/Aral/Dev'
 
+# kitty needs kitten for ssh 
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
+PROMPT=$'%{\e[0;34m%}%B┌─[%b%{\e[0m%}%{\e[1;32m%}%n%{\e[1;34m%}@%{\e[0m%}%{\e[0;36m%}%m%{\e[0;34m%}%B]%b%{\e[0m%} - %b%{\e[0;34m%}%B[%b%{\e[1;37m%}%~%{\e[0;34m%}%B]%b%{\e[0m%} - %{\e[0;34m%}%B[%b%{\e[0;33m%}%!%{\e[0;34m%}%B]%b%{\e[0m%}
+%{\e[0;34m%}%B└─%B[%{\e[1;35m%}$%{\e[0;34m%}%B]%{\e[0m%}%b '
+RPROMPT='[%*]'
+PS2=$' \e[0;34m%}%B>%{\e[0m%}%b '
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/Aral/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -46,5 +55,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-
+#

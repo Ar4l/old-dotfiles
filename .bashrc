@@ -50,3 +50,6 @@ PS1='\n${CONDA_PROMPT}${GIT_PROMPT}\[\e[0;37m\]\u@\h:\[\e[90m\]\W\[\e[37m\] \011
 # always start terminal at the bottom, please.
 printf "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 
+# Kitty needs a kitten for proper $TERM detection on ssh 
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
