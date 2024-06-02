@@ -1,4 +1,21 @@
 
+# fucking conda being conda
+alias python=python3
+alias pip=pip3
+export CONDA_AUTO_ACTIVATE_BASE=false
+
+# Application shorthands
+export vs="Visual Studio Code"
+export ij="IntelliJ IDEA"
+
+# Path shorthands
+export research='/Users/Aral/Aral/Delft/YEAR 4'
+export rp="/Users/Aral/Aral/Delft/YEAR 3/0 RESEARCH PROJECT/LLM4CodeCompression"
+
+export ml="/Users/Aral/Desktop/Music Library"
+export brain="/Users/Aral/Library/Mobile Documents/iCloud~md~obsidian/Documents/Brain 2.0"
+export dev='/Users/Aral/Aral/Dev'
+
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'

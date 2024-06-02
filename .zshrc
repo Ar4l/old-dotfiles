@@ -1,4 +1,12 @@
 
+export PATH="/opt/homebrew/opt/bison/bin:$PATH"
+export PATH="/Applications/CMake.app/Contents/bin":"$PATH"
+export PATH="/Users/Aral/Aral/.bin":"$PATH"
+export PATH="/Users/Aral/opt/anaconda3/bin":"$PATH"
+export PATH="/Users/Aral/.local/bin":"$PATH"
+export PATH="/Users/Aral/.ghcup/bin":"$PATH"
+
+
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f ~/.aliases ]; then
@@ -7,31 +15,7 @@ fi
 
 # From Terminal Gruvbox theme: colour ls entries
 export CLICOLOR=1
-
-# fucking conda being conda
-alias python=python3
-alias pip=pip3
-export CONDA_AUTO_ACTIVATE_BASE=false
-
-export PATH="/opt/homebrew/opt/bison/bin:$PATH"
-export PATH="/Applications/CMake.app/Contents/bin":"$PATH"
-export PATH="/Users/Aral/Aral/.bin":"$PATH"
-export PATH="/Users/Aral/opt/anaconda3/bin":"$PATH"
-export PATH="/Users/Aral/.local/bin":"$PATH"
-export PATH="/Users/Aral/.ghcup/bin":"$PATH"
-
-# Application shorthands
-export vs="Visual Studio Code"
-export ij="IntelliJ IDEA"
-
-# Path shorthands
-export research="/Users/Aral/Aral/Delft/YEAR 4"
-export rp="/Users/Aral/Aral/Delft/YEAR 3/0 RESEARCH PROJECT/LLM4CodeCompression"
-
-export ml="/Users/Aral/Desktop/Music Library"
-export brain="/Users/Aral/Library/Mobile Documents/iCloud~md~obsidian/Documents/Brain 2.0"
-export dev='/Users/Aral/Aral/Dev'
-
+#
 # kitty needs kitten for ssh 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
