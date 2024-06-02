@@ -1,5 +1,55 @@
 " Comments in Vimscript start with a `"`.
 
+"" KITTY Stuff
+" Mouse support
+set mouse=a
+set ttymouse=sgr
+set balloonevalterm
+" Styled and colored underline support
+let &t_AU = "\e[58:5:%dm"
+let &t_8u = "\e[58:2:%lu:%lu:%lum"
+let &t_Us = "\e[4:2m"
+let &t_Cs = "\e[4:3m"
+let &t_ds = "\e[4:4m"
+let &t_Ds = "\e[4:5m"
+let &t_Ce = "\e[4:0m"
+" Strikethrough
+let &t_Ts = "\e[9m"
+let &t_Te = "\e[29m"
+" Truecolor support
+let &t_8f = "\e[38:2:%lu:%lu:%lum"
+let &t_8b = "\e[48:2:%lu:%lu:%lum"
+let &t_RF = "\e]10;?\e\\"
+let &t_RB = "\e]11;?\e\\"
+" Bracketed paste
+let &t_BE = "\e[?2004h"
+let &t_BD = "\e[?2004l"
+let &t_PS = "\e[200~"
+let &t_PE = "\e[201~"
+" Cursor control
+let &t_RC = "\e[?12$p"
+let &t_SH = "\e[%d q"
+let &t_RS = "\eP$q q\e\\"
+let &t_SI = "\e[5 q"
+let &t_SR = "\e[3 q"
+let &t_EI = "\e[1 q"
+let &t_VS = "\e[?12l"
+" Focus tracking
+let &t_fe = "\e[?1004h"
+let &t_fd = "\e[?1004l"
+execute "set <FocusGained>=\<Esc>[I"
+execute "set <FocusLost>=\<Esc>[O"
+" Window title
+let &t_ST = "\e[22;2t"
+let &t_RT = "\e[23;2t"
+
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce. This causes incorrect background rendering when
+" using a color theme with a background color in terminals such as
+" kitty that do not support background color erase.
+let &t_ut=''
+
+
 " If you open this file in Vim, it'll be syntax highlighted for you.
 
 " Vim is based on Vi. Setting `nocompatible` switches from the default
@@ -59,10 +109,6 @@ nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
 
-" Enable mouse support. You should avoid relying on this too much, but it can
-" sometimes be convenient.
-set mouse+=a
-
 if (empty($TMUX))
   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
@@ -91,36 +137,21 @@ call plug#begin()
 "   - e.g. `call plug#begin('~/.vim/plugged')`
 "   - Avoid using standard Vim directory names like 'plugin'
 
-" Make sure you use single quotes
+" Essentials
+Plug 'morhetz/gruvbox'							" Proper groovy 
+Plug 'tpope/vim-sensible'						" Better defaults
+Plug 'preservim/nerdtree'						" Actual file browser
 
-" " Editors in the 21st century should ship with language servers
-" Plug 'prabirshrestha/vim-lsp'
-" 
-" " Automatically install lsp for an open file 
-" Plug 'mattn/vim-lsp-settings'
-" 
-" " Autocompletion does not ship with the fucking lsp client???
-" Plug 'prabirshrestha/asyncomplete.vim'
-" 
-" " Autocompletion is not fuckign linked to the Lsp client?????
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-" Proper groovy 
-Plug 'morhetz/gruvbox'
-
-" Easy alignment as it should be 
-Plug 'junegunn/vim-easy-align'
-
-" Better defaults
-Plug 'tpope/vim-sensible'
-
+" Autocompletion
 Plug 'prabirshrestha/asyncomplete.vim' 			" auto completions please
 Plug 'prabirshrestha/vim-lsp'					" language server to provide them
 Plug 'prabirshrestha/asyncomplete-lsp.vim'		" link ls to completions 
+Plug 'mattn/vim-lsp-settings'					" install LS for open file 
 
+" Other
+Plug 'junegunn/vim-easy-align'					" Easy alignment as it should be
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'preservim/nerdtree'
 Plug 'easymotion/vim-easymotion'
 
 call plug#end()
@@ -135,4 +166,5 @@ if executable('pyls')
 endif
 
 set background=dark
+colorscheme gruvbox
 
