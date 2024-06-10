@@ -31,12 +31,16 @@ if [[ $PWD = */dotfiles ]]; then
 			yes | apt-get install vim 
 		fi
 
-		curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.bash_git
+	fi
 
-		# git lfs 
+	# if not on MacOS (local), install git prompt script 
+	curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.bash_git
+
+	# if not on MacOS (local) and apt-get available (on Debian), install Git-LFS.
+	if which apt-get > /dev/null; then 
 		curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 		yes | apt-get install git-lfs 
-	fi
+	fi 
 
 	# vim plugins
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
