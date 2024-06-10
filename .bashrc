@@ -1,5 +1,8 @@
 #!/bin/bash
 
+bind '"\e[1;3D" backward-word'
+bind '"\e[1;3C" forward-word'
+
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f ~/.aliases ]; then
