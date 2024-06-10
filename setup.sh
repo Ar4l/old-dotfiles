@@ -52,7 +52,8 @@ if [[ $PWD = */dotfiles ]]; then
 
 	# update tmux 
 	tmux source-file ~/.tmux.conf
- 
+
+	cd ..
 	rm -rf dotfiles
 
 	# open a new shell
