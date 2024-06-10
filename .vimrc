@@ -154,6 +154,11 @@ Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 
+" Kitty integration
+Plug 'NikoKS/kitty-vim-tmux-navigator' 			" Navigation with Ctrl+hjkl
+Plug 'sainnhe/gruvbox-material'					" match with kitty (easy on eyes)
+
+
 call plug#end()
 
 if executable('pyls')

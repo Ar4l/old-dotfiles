@@ -35,7 +35,9 @@ if [[ $PWD = */dotfiles ]]; then
 
 	# if not on MacOS (local), install git prompt script 
 	curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.bash_git
-
+	# install kitty
+	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+ 
 	# if not on MacOS (local) and apt-get available (on Debian), install Git-LFS.
 	if which apt-get > /dev/null; then 
 		curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash

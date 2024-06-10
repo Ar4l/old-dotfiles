@@ -53,3 +53,17 @@ printf "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
 # Kitty needs a kitten for proper $TERM detection on ssh 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
+# Source kitty binary
+export PATH=$PATH:~/.local/kitty.app/bin/
+
+# Set KITTY_PORT env variable
+if [[ $SSH_TTY ]] && ! [ -n "$TMUX" ]; then
+  export KITTY_PORT=`kitty @ ls 2>/dev/null | grep "[0-9]:/tmp/mykitty" | head -n 1 | cut -d : -f 1 | cut -d \" -f 2`
+fi
+
+# Kitty Terminal Navigation
+bind -x '"\C-h": kitty @ kitten neighboring_window.py left'
+bind -x '"\C-j": kitty @ kitten neighboring_window.py top'
+bind -x '"\C-k": kitty @ kitten neighboring_window.py bottom'
+bind -x '"\C-l": kitty @ kitten neighboring_window.py right' 
+
