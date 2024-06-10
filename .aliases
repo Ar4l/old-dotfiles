@@ -4,11 +4,15 @@ alias python=python3
 alias pip=pip3
 export CONDA_AUTO_ACTIVATE_BASE=false
 
+# kitty stuff, probably should not override ssh 
+alias ssh='ssh -R 50000:${KITTY_LISTEN_ON#*:}'
+
 # Application shorthands
 export vs="Visual Studio Code"
 export ij="IntelliJ IDEA"
 
 # Path shorthands
+export aise="'/Users/Aral/Aral/Delft/YEAR\ 4'"
 export research='/Users/Aral/Aral/Delft/YEAR 4'
 export rp="/Users/Aral/Aral/Delft/YEAR 3/0 RESEARCH PROJECT/LLM4CodeCompression"
 
@@ -75,44 +79,72 @@ function killge() {
 
 
 function setup_daic() {
-	# installing from source because this daic server hates its users
+	# installing user-locally from source because this daic server hates its users
+	# Creates ~/local, and ~/local/bin to store the binaries (linked to PATH)
+	# guide; https://github.com/tmux/tmux/wiki/Installing
 
-	# download and install libevent (for user)
+	echo 'updating PATH'
+	echo 'export PATH=$HOME/local/bin:$PATH' >> $HOME/.bashrc
+	mkdir ~/local
+	cd ~/local
+	mkdir bin
+
+
+	## download and install libevent (for user)
+	echo 'installing libevent (tmux dependency)...'
 	wget https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
-	tar xvf libevent-2.1.12-stable.tar.gz 
+	tar xf libevent-2.1.12-stable.tar.gz  > /dev/null
 	cd libevent-2.1.12-stable
-	./configure --prefix=$HOME
-	make -j 8
-	make install 
+
+	./configure --prefix=$HOME/local --enable-shared
+	make && make install
 
 	# remove installation files
 	cd ..
-	# rm -rf libevent-2.1.12-stable
-	# rm -rf libevent-2.1.12-stable.tar.gz
-	
+	rm -rf libevent-2.1.12-stable
+	rm -rf libevent-2.1.12-stable.tar.gz
 
-	# download and install tmux 
+
+	## download and install tmux
+	echo 'installing tmux...'
 	wget https://github.com/tmux/tmux/releases/download/3.4/tmux-3.4.tar.gz
-	tar xvf tmux-3.4.tar.gz
+	tar xf tmux-3.4.tar.gz > /dev/null
 	cd tmux-3.4
-	./configure --prefix=$HOME CFLAGS="-I$HOME/include" LDFLAGS="-L$HOME/lib"
+	PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig ./configure --prefix=$HOME/local
+	make && make install
+
+	# remaining setup
+	LD_LIBRARY_PATH=$HOME/local/lib $HOME/local/bin/tmux -V
+	MANPATH=$HOME/local/share/man man tmux
+	echo 'export PATH=$HOME/local/bin:$PATH' >> .bash_profile
+	echo 'export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH' >> .bash_profile
+	echo 'export MANPATH=$HOME/local/share/man:$MANPATH' >> bash_profile
+	export PATH=$HOME/local/bin:$PATH
+	export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
+	export MANPATH=$HOME/local/share/man:$MANPATH
 
 	# remove installation files
 	cd ..
-	# rm -rf tmux-3.4
-	# rm -rf tmux-3.4.tar.gz
+	rm -rf tmux-3.4
+	rm -rf tmux-3.4.tar.gz
 
-	# download and install latest vim 
+	## download and install latest vim
+	echo 'installing vim...'
 	git clone https://github.com/vim/vim.git
 	cd vim/src
-	make 
-	# make test 
-	make install DESTDIR=~/bin
-	
+
+	./configure --prefix=$HOME/local
+	make -s > /dev/null
+	make install -s > /dev/null
+
 	# remove installation files
 	cd ../..
+	rm -rf vim
+
+	cd $HOME
 }
 
 alias nv='watch -d -n "0.5" nvidia-smi'
 alias gis='git status'
+alias giff='git diff'
 
