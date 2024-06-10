@@ -74,7 +74,7 @@ function killge() {
 }
 
 
-function get_tmux() {
+function setup_daic() {
 	# installing from source because this daic server hates its users
 
 	# download and install libevent (for user)
@@ -87,8 +87,8 @@ function get_tmux() {
 
 	# remove installation files
 	cd ..
-	rm -rf libevent-2.1.12-stable
-	rm -rf libevent-2.1.12-stable.tar.gz
+	# rm -rf libevent-2.1.12-stable
+	# rm -rf libevent-2.1.12-stable.tar.gz
 	
 
 	# download and install tmux 
@@ -99,8 +99,18 @@ function get_tmux() {
 
 	# remove installation files
 	cd ..
-	rm -rf tmux-3.4
-	rm -rf tmux-3.4.tar.gz
+	# rm -rf tmux-3.4
+	# rm -rf tmux-3.4.tar.gz
+
+	# download and install latest vim 
+	git clone https://github.com/vim/vim.git
+	cd vim/src
+	make 
+	# make test 
+	make install DESTDIR=~/bin
+	
+	# remove installation files
+	cd ../..
 }
 
 alias nv='watch -d -n "0.5" nvidia-smi'
