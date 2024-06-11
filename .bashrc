@@ -1,8 +1,5 @@
 #!/bin/bash
 
-bind '"\e[1;3D" backward-word'
-bind '"\e[1;3C" forward-word'
-
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f ~/.aliases ]; then
@@ -53,20 +50,27 @@ PS1='\n${CONDA_PROMPT}${GIT_PROMPT}\[\e[0;37m\]\u@\h:\[\e[90m\]\W\[\e[37m\] \011
 # always start terminal at the bottom, please.
 printf "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 
+
 # Kitty needs a kitten for proper $TERM detection on ssh 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
-
-# Source kitty binary
-export PATH=$PATH:~/.local/kitty.app/bin/
 
 # Set KITTY_PORT env variable
 if [[ $SSH_TTY ]] && ! [ -n "$TMUX" ]; then
   export KITTY_PORT=`kitty @ ls 2>/dev/null | grep "[0-9]:/tmp/mykitty" | head -n 1 | cut -d : -f 1 | cut -d \" -f 2`
-fi
+fi 
 
-# Kitty Terminal Navigation
-bind -x '"\C-h": kitty @ kitten neighboring_window.py left'
-bind -x '"\C-j": kitty @ kitten neighboring_window.py top'
-bind -x '"\C-k": kitty @ kitten neighboring_window.py bottom'
-bind -x '"\C-l": kitty @ kitten neighboring_window.py right' 
+# only if in TTY (interactive) set bindings
+if [[ "$-" = *i* ]] && [ -t 1 ]; then 
+  # Kitty Terminal Navigation
+  bind -x '"\C-h": kitty @ kitten neighboring_window.py left'
+  bind -x '"\C-j": kitty @ kitten neighboring_window.py top'
+  bind -x '"\C-k": kitty @ kitten neighboring_window.py bottom'
+  bind -x '"\C-l": kitty @ kitten neighboring_window.py right' 
+
+  bind '"\e[1;3D" backward-word'
+  bind '"\e[1;3C" forward-word'
+
+  # Source kitty binary
+  export PATH=$PATH:~/.local/kitty.app/bin/
+fi
 

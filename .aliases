@@ -114,8 +114,8 @@ function setup_daic() {
 	make && make install
 
 	# remaining setup
-	LD_LIBRARY_PATH=$HOME/local/lib $HOME/local/bin/tmux -V
-	MANPATH=$HOME/local/share/man man tmux
+	# LD_LIBRARY_PATH=$HOME/local/lib $HOME/local/bin/tmux -V
+	# MANPATH=$HOME/local/share/man man tmux
 	echo 'export PATH=$HOME/local/bin:$PATH' >> .bash_profile
 	echo 'export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH' >> .bash_profile
 	echo 'export MANPATH=$HOME/local/share/man:$MANPATH' >> bash_profile
