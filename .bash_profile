@@ -14,3 +14,13 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# If there exists an executable tmux on daic, then set this accordingly
+if [ -x '/home/nfs/addemoor/local/bin/tmux' ]; then
+	export PATH=/home/nfs/addemoor/local/bin:$PATH
+	export TERM=xterm-256color
+fi
+
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+
