@@ -1,0 +1,10 @@
+
+# some distros prepare a readline config, which won't be read if this file exists. 
+# so, let's explicitly read in the file 
+$include /etc/inputrc
+
+## arrow up
+"\e[A":history-search-backward
+## arrow down
+"\e[B":history-search-forward
+

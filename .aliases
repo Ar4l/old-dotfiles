@@ -12,7 +12,7 @@ export vs="Visual Studio Code"
 export ij="IntelliJ IDEA"
 
 # Path shorthands
-export aise="'/Users/Aral/Aral/Delft/YEAR\ 4'"
+export aise='/Users/Aral/Aral/Delft/YEAR 4'
 export research='/Users/Aral/Aral/Delft/YEAR 4'
 export rp="/Users/Aral/Aral/Delft/YEAR 3/0 RESEARCH PROJECT/LLM4CodeCompression"
 
@@ -144,7 +144,9 @@ function setup_daic() {
 	cd $HOME
 }
 
-alias nv='watch -d -n "0.5" nvidia-smi'
+# shouldn't run this too often because it lags the GPU 
+alias nv='watch -d -n "10" nvidia-smi'
+
 alias gis='git status'
 alias giff='git diff'
 

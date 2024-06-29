@@ -140,7 +140,8 @@ call plug#begin()
 " Essentials
 Plug 'morhetz/gruvbox'							" Proper groovy 
 Plug 'tpope/vim-sensible'						" Better defaults
-Plug 'preservim/nerdtree'						" Actual file browser
+" We already have this hard-coded in .vim/plugged
+" Plug 'preservim/nerdtree'						" Actual file browser
 
 " Autocompletion
 Plug 'prabirshrestha/asyncomplete.vim' 			" auto completions please

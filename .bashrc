@@ -74,3 +74,5 @@ if [[ "$-" = *i* ]] && [ -t 1 ]; then
   export PATH=$PATH:~/.local/kitty.app/bin/
 fi
 
+source /Users/Aral/anaconda3/bin/activate
+
