@@ -1,47 +1,47 @@
 " Comments in Vimscript start with a `"`.
 
-"" KITTY Stuff
-" Mouse support
+"" kitty stuff
+" mouse support
 set mouse=a
 set ttymouse=sgr
 set balloonevalterm
-" Styled and colored underline support
-let &t_AU = "\e[58:5:%dm"
+" styled and colored underline support
+let &t_au = "\e[58:5:%dm"
 let &t_8u = "\e[58:2:%lu:%lu:%lum"
-let &t_Us = "\e[4:2m"
-let &t_Cs = "\e[4:3m"
+let &t_us = "\e[4:2m"
+let &t_cs = "\e[4:3m"
 let &t_ds = "\e[4:4m"
-let &t_Ds = "\e[4:5m"
-let &t_Ce = "\e[4:0m"
-" Strikethrough
-let &t_Ts = "\e[9m"
-let &t_Te = "\e[29m"
-" Truecolor support
+let &t_ds = "\e[4:5m"
+let &t_ce = "\e[4:0m"
+" strikethrough
+let &t_ts = "\e[9m"
+let &t_te = "\e[29m"
+" truecolor support
 let &t_8f = "\e[38:2:%lu:%lu:%lum"
 let &t_8b = "\e[48:2:%lu:%lu:%lum"
-let &t_RF = "\e]10;?\e\\"
-let &t_RB = "\e]11;?\e\\"
-" Bracketed paste
-let &t_BE = "\e[?2004h"
-let &t_BD = "\e[?2004l"
-let &t_PS = "\e[200~"
-let &t_PE = "\e[201~"
-" Cursor control
-let &t_RC = "\e[?12$p"
-let &t_SH = "\e[%d q"
-let &t_RS = "\eP$q q\e\\"
-let &t_SI = "\e[5 q"
-let &t_SR = "\e[3 q"
-let &t_EI = "\e[1 q"
-let &t_VS = "\e[?12l"
-" Focus tracking
+let &t_rf = "\e]10;?\e\\"
+let &t_rb = "\e]11;?\e\\"
+" bracketed paste
+let &t_be = "\e[?2004h"
+let &t_bd = "\e[?2004l"
+let &t_ps = "\e[200~"
+let &t_pe = "\e[201~"
+" cursor control
+let &t_rc = "\e[?12$p"
+let &t_sh = "\e[%d q"
+let &t_rs = "\ep$q q\e\\"
+let &t_si = "\e[5 q"
+let &t_sr = "\e[3 q"
+let &t_ei = "\e[1 q"
+let &t_vs = "\e[?12l"
+" focus tracking
 let &t_fe = "\e[?1004h"
 let &t_fd = "\e[?1004l"
-execute "set <FocusGained>=\<Esc>[I"
-execute "set <FocusLost>=\<Esc>[O"
-" Window title
-let &t_ST = "\e[22;2t"
-let &t_RT = "\e[23;2t"
+execute "set <focusgained>=\<esc>[i"
+execute "set <focuslost>=\<esc>[o"
+" window title
+let &t_st = "\e[22;2t"
+let &t_rt = "\e[23;2t"
 
 " vim hardcodes background color erase even if the terminfo file does
 " not contain bce. This causes incorrect background rendering when
@@ -119,6 +119,7 @@ if (empty($TMUX))
 endif
 
 
+" figure out filetype on open
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4

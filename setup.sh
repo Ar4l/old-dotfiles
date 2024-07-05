@@ -2,11 +2,11 @@
 
 # setup this dotfiles dir 
 
-if [ -d dotfiles ]; then 
-	cd dotfiles 
+if [ -d old-dotfiles ]; then 
+	cd old-dotfiles 
 fi 
 
-if [[ $PWD = */dotfiles ]]; then
+if [[ $PWD = */old-dotfiles ]]; then
 
 	# make this file delete itself to not clutter the home directory
 	# setups are one-off 
