@@ -74,5 +74,8 @@ if [[ "$-" = *i* ]] && [ -t 1 ]; then
   export PATH=$PATH:~/.local/kitty.app/bin/
 fi
 
-source /Users/Aral/anaconda3/bin/activate
+source ~/anaconda3/bin/activate
+
+# someone on a server thought it would be funny to put nano as the default 
+export EDITOR=vim
 
